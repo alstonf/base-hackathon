@@ -5,20 +5,32 @@ import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import { getSession, saveSession, SessionData } from '../lib/session';
 
+// Define a type for the custom window property
+interface CustomWindow extends Window {
+  handleConnect?: (address: string, basename?: string) => void;
+}
+
+declare const window: CustomWindow;
+
 export default function Home() {
   const [wallet, setWallet] = useState<SessionData>(getSession());
 
   useEffect(() => {
-    (window as any).handleConnect = (address: string, basename?: string) => {
+    window.handleConnect = (address: string, basename?: string) => {
       const sessionData: SessionData = { address, basename };
       setWallet(sessionData);
       saveSession(sessionData);
+    };
+
+    // Cleanup on unmount
+    return () => {
+      window.handleConnect = undefined;
     };
   }, []);
 
   const handleDisconnect = () => {
     setWallet({});
-    (window as any).handleConnect = null;
+    window.handleConnect = undefined;
   };
 
   return (
@@ -42,7 +54,7 @@ export default function Home() {
         )}
       </main>
       <footer className="p-4 bg-secondary text-white text-center">
-        <p>&copy; 2025 My DApp. All rights reserved.</p>
+        <p>© 2025 My DApp. All rights reserved.</p>
       </footer>
     </div>
   );

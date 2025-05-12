@@ -6,6 +6,13 @@ import WalletPopup from './WalletPopup';
 import { Avatar, Name } from '@coinbase/onchainkit/identity';
 import { clearSession } from '../lib/session';
 
+// Define a type for the custom window property
+interface CustomWindow extends Window {
+  handleConnect?: (address: string, basename?: string) => void;
+}
+
+declare const window: CustomWindow;
+
 interface HeaderProps {
   address?: string;
   basename?: string;
@@ -54,7 +61,7 @@ export default function Header({ address, basename, onDisconnect }: HeaderProps)
         onClose={() => setIsWalletPopupOpen(false)}
         onConnect={(address, basename) => {
           setIsWalletPopupOpen(false);
-          (window as any).handleConnect?.(address, basename);
+          window.handleConnect?.(address, basename);
         }}
       />
     </header>
