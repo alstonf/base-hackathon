@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ['onchainkit.co', 'coinbase.com'],
+  },
     // Silence warnings
     // https://github.com/WalletConnect/walletconnect-monorepo/issues/1908
     webpack: (config) => {
