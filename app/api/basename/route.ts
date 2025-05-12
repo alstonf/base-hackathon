@@ -13,7 +13,7 @@ export async function GET(request: Request) {
     // Simulate Basename fetching (replace with actual OnchainKit identity API call)
     const basename = `${address.slice(0, 6)}.base.eth`; // Mock Basename
     return NextResponse.json({ basename });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to fetch Basename' }, { status: 500 });
   }
 }
