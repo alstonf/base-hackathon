@@ -3,6 +3,29 @@
 @tailwind utilities;
 
 :root {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply transition-colors duration-200;
+}
+
+/* Add smooth transitions for all interactive elements */
+button, a {
+  @apply transition-all duration-200;
+}
+
+/* Add loading animation */
+.loading {
+  @apply animate-pulse;
+}
+
+/* Add hover effects for interactive elements */
+.hover-lift {
+  @apply transform transition-transform duration-200 hover:scale-105;
+}
+
+:root {
   --background: #ffffff;
   --foreground: #171717;
 }
