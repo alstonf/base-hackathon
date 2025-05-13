@@ -52,12 +52,12 @@ export default function WalletPopup({ isOpen, onClose, onConnect }: WalletPopupP
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
-        <h2 className="text-xl font-bold mb-4 text-secondary">Select Wallet</h2>
+    <div className="fixed inset-0 bg-black/50 dark:bg-black/70 flex items-center justify-center z-50">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full">
+        <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Select Wallet</h2>
         <div className="space-y-3">
           <button
-            className="w-full bg-primary text-white px-4 py-2 rounded hover:bg-blue-700 flex items-center justify-center space-x-2"
+            className="w-full bg-primary text-white px-4 py-2 rounded hover:bg-blue-700 dark:hover:bg-blue-600 flex items-center justify-center space-x-2"
             onClick={connectWallet}
           >
             <Image
@@ -93,10 +93,10 @@ export default function WalletPopup({ isOpen, onClose, onConnect }: WalletPopupP
           </button>
         </div>
         {error && (
-          <p className="mt-4 text-red-600 text-sm text-center">{error}</p>
+          <p className="mt-4 text-red-600 dark:text-red-400 text-sm text-center">{error}</p>
         )}
         <button
-          className="mt-4 w-full bg-gray-300 text-secondary px-4 py-2 rounded hover:bg-gray-400"
+          className="mt-4 w-full bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded hover:bg-gray-400 dark:hover:bg-gray-600"
           onClick={onClose}
         >
           Cancel
