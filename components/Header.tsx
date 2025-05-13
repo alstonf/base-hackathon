@@ -28,25 +28,20 @@ export default function Header({ address, basename, onDisconnect }: HeaderProps)
   };
 
   return (
-    <header className="flex justify-between items-center p-4 bg-secondary text-white shadow-md
-      sticky top-0 z-40 backdrop-blur-sm bg-opacity-90">
-      <h1 className="text-2xl font-bold hover:scale-105 transition-transform duration-200">
-        My DApp
-      </h1>
+    <header className="flex justify-between items-center p-4 bg-secondary text-white shadow-md">
+      <h1 className="text-2xl font-bold">My DApp</h1>
       <div className="flex items-center">
         {address ? (
-          <div className="flex items-center space-x-3 animate-fadeIn">
-            <Avatar className="h-10 w-10 rounded-full transform hover:scale-110 transition-transform duration-200" />
+          <div className="flex items-center space-x-3">
+            <Avatar className="h-10 w-10 rounded-full" />
             <div className="flex flex-col">
-              <Name className="text-white font-semibold hover:text-blue-300 transition-colors duration-200" />
+              <Name className="text-white font-semibold" />
               <span className="text-sm text-gray-300">
                 {basename || (address.slice(0, 6) + '...' + address.slice(-4))}
               </span>
             </div>
             <button
-              className="bg-red-600 text-white px-3 py-1 rounded 
-                hover:bg-red-700 transform hover:scale-105 
-                transition-all duration-200 hover:shadow-lg"
+              className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
               onClick={handleDisconnect}
             >
               Disconnect
@@ -54,9 +49,7 @@ export default function Header({ address, basename, onDisconnect }: HeaderProps)
           </div>
         ) : (
           <button
-            className="bg-primary text-white px-4 py-2 rounded 
-              hover:bg-blue-700 transform hover:scale-105 
-              transition-all duration-200 hover:shadow-lg"
+            className="bg-primary text-white px-4 py-2 rounded hover:bg-blue-700"
             onClick={() => setIsWalletPopupOpen(true)}
           >
             Connect Wallet

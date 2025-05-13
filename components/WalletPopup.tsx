@@ -52,25 +52,12 @@ export default function WalletPopup({ isOpen, onClose, onConnect }: WalletPopupP
   if (!isOpen) return null;
 
   return (
-    <div 
-      className={`fixed inset-0 bg-black/50 dark:bg-black/70 flex items-center justify-center z-50 
-        transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-    >
-      <div 
-        className={`bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full
-          transform transition-all duration-300 
-          ${isOpen ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'}`}
-      >
-        <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
-          Select Wallet
-        </h2>
+    <div className="fixed inset-0 bg-black/50 dark:bg-black/70 flex items-center justify-center z-50">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full">
+        <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Select Wallet</h2>
         <div className="space-y-3">
-          {/* Wallet buttons with hover animations */}
           <button
-            className="w-full bg-primary text-white px-4 py-2 rounded 
-              transform transition-all duration-200 hover:scale-102 hover:bg-blue-700 
-              dark:hover:bg-blue-600 flex items-center justify-center space-x-2
-              hover:shadow-lg"
+            className="w-full bg-primary text-white px-4 py-2 rounded hover:bg-blue-700 dark:hover:bg-blue-600 flex items-center justify-center space-x-2"
             onClick={connectWallet}
           >
             <Image
@@ -105,12 +92,8 @@ export default function WalletPopup({ isOpen, onClose, onConnect }: WalletPopupP
             <span>Other Wallet</span>
           </button>
         </div>
-        
         {error && (
-          <p className="mt-4 text-red-600 dark:text-red-400 text-sm text-center
-            animate-fadeIn">
-            {error}
-          </p>
+          <p className="mt-4 text-red-600 dark:text-red-400 text-sm text-center">{error}</p>
         )}
         <button
           className="mt-4 w-full bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded hover:bg-gray-400 dark:hover:bg-gray-600"
