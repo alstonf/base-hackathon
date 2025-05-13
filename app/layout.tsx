@@ -2,6 +2,7 @@ import '@coinbase/onchainkit/styles.css';
 import type { Metadata } from 'next';
 import './globals.css';
 import { Providers } from './providers';
+import { ProfileAvatar } from '@/components/ProfileAvatar';
 
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME,
@@ -16,6 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-200">
+        <header className="fixed top-0 right-0 p-4">
+          <ProfileAvatar />
+        </header>
         <Providers>{children}</Providers>
       </body>
     </html>
