@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Providers } from './providers';
 import { ProfileAvatar } from '@/components/ProfileAvatar';
+import { OnchainKitProvider } from '@coinbase/onchainkit';
 
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME,

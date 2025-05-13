@@ -14,6 +14,14 @@ export default function WalletPopup({ isOpen, onClose, onConnect }: WalletPopupP
   const [connectedAddress, setConnectedAddress] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Reset state when popup is closed
+  useEffect(() => {
+    if (!isOpen) {
+      setConnectedAddress(null);
+      setError(null);
+    }
+  }, [isOpen]);
+
   useEffect(() => {
     if (connectedAddress) {
       const fetchBasename = async () => {
