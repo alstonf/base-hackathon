@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { Notification } from '@/components/Notification';
 
 interface WalletContextType {
@@ -46,10 +46,10 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const disconnect = () => {
+  const disconnect = useCallback(() => {
     setAddress(null);
     showNotification('Wallet disconnected', 'success');
-  };
+  }, []);
 
   useEffect(() => {
     if (window.ethereum) {
@@ -68,7 +68,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         window.ethereum.removeListener('accountsChanged', () => {});
       }
     };
-  }, []);
+  }, [disconnect]);
 
   return (
     <WalletContext.Provider
