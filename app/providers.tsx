@@ -1,24 +1,15 @@
 'use client';
 
-import { base } from 'wagmi/chains';
-import { OnchainKitProvider } from '@coinbase/onchainkit';
 import type { ReactNode } from 'react';
 import { ThemeProvider } from 'next-themes';
+import { WalletProvider } from '@/lib/WalletContext';
 
 export function Providers(props: { children: ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <OnchainKitProvider
-        apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
-        chain={base}
-        config={{ 
-          appearance: { 
-            mode: 'auto',
-          }
-        }}
-      >
+      <WalletProvider>
         {props.children}
-      </OnchainKitProvider>
+      </WalletProvider>
     </ThemeProvider>
   );
 }

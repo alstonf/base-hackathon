@@ -10,13 +10,10 @@
   },
   "dependencies": {
     "@coinbase/onchainkit": "latest",
-    "@tanstack/react-query": "^5",
     "next": "14.2.15",
     "next-themes": "^0.4.6",
     "react": "^18",
-    "react-dom": "^18",
-    "viem": "^2.27.2",
-    "wagmi": "^2.14.11"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",
